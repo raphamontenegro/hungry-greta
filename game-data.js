@@ -163,6 +163,8 @@ Game.prototype.checkCollision = function () {
     self.player.y = document.body.clientHeight - self.player.size;
   }
 
+  var snd = new Audio("./images for the game/aud_chomp.mp3"); // buffers automatically when created
+
   if (self.arrow) {
     var arrowSides = { 
       top: self.arrow.y,
@@ -183,6 +185,7 @@ Game.prototype.checkCollision = function () {
       }
 
       if (balloonSides.left < arrowSides.right && arrowSides.left < balloonSides.right && balloonSides.top < arrowSides.bottom && arrowSides.top < balloonSides.bottom) {
+          snd.play();
           balloon.hasCollided = true;
           self.score += 10;
           self.scoreElement.innerText = self.score;
